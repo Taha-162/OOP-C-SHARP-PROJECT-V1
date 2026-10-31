@@ -1,0 +1,6 @@
+Product Name,Price,Stock,Discount
+medoralipstick,200,19,0
+pondsfacewash,300,12,0
+coverfoundation,650,9,0
+xqmbase,300,10,5
+hudabeautyprimer,250,5,10

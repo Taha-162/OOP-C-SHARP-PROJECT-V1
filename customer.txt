@@ -1,0 +1,2 @@
+Customer Name,Product Name,quantity,total bill
+taha,medoralipstick,4,800
