@@ -64,7 +64,10 @@ namespace Cosmetic_Store_Management_system
 
                 Console.WriteLine("1. Admin");
                 Console.WriteLine("2. User");
-                Console.WriteLine("3. Exit");
+                Console.WriteLine("3.page_problem1 menu");
+                Console.WriteLine("4. problem2 menu");
+                   
+                Console.WriteLine("5. Exit");
 
                 Console.Write("Enter your choice: ");
                 string choice = Console.ReadLine();
@@ -78,6 +81,14 @@ namespace Cosmetic_Store_Management_system
                     user_menu();
                 }
                 else if (choice == "3")
+                {
+                    problemonemeun();
+                }
+                else if(choice=="4")
+                {
+                    second_problem();
+                }
+                else if (choice == "5")
                 {
                     clear_screen();
                     Console.WriteLine("Thank you for using Cosmetic Store  Management System :-D ");
@@ -578,5 +589,89 @@ namespace Cosmetic_Store_Management_system
 
             pause();
         }
+        //problem 1
+        public void problemonemeun()
+        {
+            clear_screen() ;
+            Console.WriteLine("problem 1 menu");
+            Console.WriteLine("1.first page");
+            Console.WriteLine("N.Next Page");
+            Console.WriteLine("P.Previous page");
+            Console.WriteLine("L.Last page");
+            Console.WriteLine("X.Exit ");
+            string choice= Console.ReadLine();
+            while (true)
+            {
+
+                if (choice == "1")
+                {
+                    show_products(service.first_page());
+                }
+                else if (choice == "N")
+                {
+                    show_products(service.second_page());
+                }
+                else if(choice == "P")
+                {
+                    show_products(service.first_page());
+                }
+                else if( choice == "L")
+                {
+                    show_products(service.last_page());
+                }
+                else if(choice == "X")
+                {
+                    clear_screen();
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("invalid chocie");
+                }
+                Console.WriteLine("Thanx for using our system");
+                pause();
+            }
+            
+        }
+        // problem 2
+        public void second_problem()
+        {
+            clear_screen();
+            Console.WriteLine("problem 2 menu");
+            Console.WriteLine("1.product_catagory");
+            Console.WriteLine("2.total_count");
+            Console.WriteLine("3.highest value");
+            Console.WriteLine("4.Exit ");
+            string choice = Console.ReadLine();
+            while (true)
+            {
+                if (choice == "1")
+                {
+                    show_products(service.filter(300));
+                }
+                else if (choice == "2")
+                {
+                    show_products(service.counts(300));
+                }
+                else if (choice == "3")
+                {
+                    show_products(service.shighest(300));
+                }
+                
+                else if (choice == "4")
+                {
+                    clear_screen();
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("invalid chocie");
+                }
+                Console.WriteLine("Thanx for using our system");
+                pause();
+            }
+
+        }
+
     }
 }

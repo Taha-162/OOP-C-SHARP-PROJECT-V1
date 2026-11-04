@@ -1,5 +1,7 @@
 ﻿
+using Cosmetic_Store_Management_system;
 using System.Collections.Generic;
+using System.Xml.Linq;
 
 namespace Cosmetic_Store_Management_system
 {
@@ -176,6 +178,7 @@ namespace Cosmetic_Store_Management_system
             return sale;
 
         }
+
         //  buy product
         public string buy_product(string name, int quantity)
         {
@@ -211,6 +214,193 @@ namespace Cosmetic_Store_Management_system
             repo.saveall(products);
 
             return "Purchase successful. Total bill: " + bill;
+        }
+        //problem 1
+        
+
+        public List<product> first_page()
+        {
+            List <product> products = new List<product>();
+            foreach(var product in products)
+            {
+                if (product.stock <= 5)
+                {
+                    products.Add(product);
+                }
+            }
+            return products;
+        }
+        public List<product> second_page()
+        {
+            List<product> products = new List<product>();
+            foreach (var product in products)
+            {
+                if (product.stock > 5 && product.stock>10)
+                {
+                    products.Add(product);
+                }
+            }
+            return products;
+        }
+        public List<product> last_page()
+        {
+            List<product> products = new List<product>();
+            foreach (var product in products)
+            {
+                if (product.stock > 10 && product.stock>20)
+                {
+                    products.Add(product);
+                }
+            }
+            return products;
+        }
+        //filtering the product
+        public List<product> filtering(string name, int price)
+        {
+            
+            
+                List<product> products = new List<product>();
+                foreach (var product in products)
+                {
+                    if (product.name == name)
+                    {
+                        if (product.price >= price)
+                        {
+                            products.Add(product);
+                        }
+                    }
+                }
+                return products;
+            
+           
+        }
+        // showing or count 
+        public List<product>  count(string name, int price)
+        {
+            List<product > products = new List<product>();
+            int count = 0;
+            foreach(var product in products)
+            {
+                filtering(name, price);
+                count++;
+                products.Add(product);
+            }
+            return products;
+
+        }
+        //total
+        public List<product> total()
+        {
+            List<product> products = new List<product>();
+            int total = 0;
+            foreach (var product in products)
+            {
+                filtering(product.name,product.price);
+                total= total+product.price;
+                products.Add(product);
+            }
+            return products;
+        }
+        // sorting
+        public List<product> sort()
+        {
+            List<product> products= new List<product>();
+            foreach (var product in products)
+            {
+                filtering(product.name, product.price);
+               
+                for (int i = 0; i < products.Count; i++)
+                {
+                    for (int j = i + 1; j < products.Count; i++)
+                    {
+                        if (products[j].price < products[j + 1].price)
+                        {
+                            int temp = products[j].price;
+                            products[j] = products[j + 1];
+                            products[j + 1] = products[j];
+                        }
+
+                    }
+                    products.Add(products[i]);
+                }
+               
+
+
+            }
+            return products;
+        }
+        // problem 2
+        public List<product> filter(int price)
+        {
+
+
+            List<product> products = new List<product>();
+            foreach (var product in products)
+            {
+                if (product.stock <= 5)
+                {
+                    if (product.price >= price)
+                    {
+                        products.Add(product);
+                    }
+                }
+            }
+            return products;
+
+
+        }
+        public List<product> counts( int price)
+        {
+
+
+            List<product> products = new List<product>();
+            int count = 0;
+            foreach (var product in products)
+            {
+                if (product.stock <= 5)
+                {
+                    if (product.price >= price)
+                    {
+                        count++;
+                        products.Add(product);
+                    }
+                }
+            }
+            return products;
+
+
+        }
+        public List<product> shighest(int price)
+        {
+
+
+            List<product> products = new List<product>();
+            foreach (var product in products)
+            {
+                if (product.stock <= 5)
+                {
+                    if (product.price >= price)
+                    {
+                        for (int i = 0; i < products.Count; i++)
+                        {
+                            for (int j = i + 1; j < products.Count; i++)
+                            {
+                                if (products[j].price < products[j + 1].price)
+                                {
+                                    int temp = products[j].price;
+                                    products[j] = products[j + 1];
+                                    products[j + 1] = products[j];
+                                }
+
+                            }
+                        }
+                        products.Add((product));
+                    }
+                }
+            }
+            return products;
+
+
         }
     }
 }
